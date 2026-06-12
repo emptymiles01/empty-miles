@@ -302,3 +302,172 @@ export const cargoMix = [
   { type: "Machinery", value: 14 },
   { type: "Electronics", value: 12 },
 ]
+
+// Provider fleet
+export type Vehicle = {
+  id: string
+  name: string
+  plate: string
+  type: TransportType
+  capacity: number
+  driver: string
+  status: "active" | "idle" | "maintenance"
+}
+
+export const fleet: Vehicle[] = [
+  { id: "VEH-01", name: "Volvo FH16", plate: "D-44821", type: "Truck (FTL)", capacity: 24, driver: "Khalid Al Rawahi", status: "active" },
+  { id: "VEH-02", name: "Scania R500", plate: "D-21043", type: "Truck (FTL)", capacity: 22, driver: "Sami Al Balushi", status: "active" },
+  { id: "VEH-03", name: "MAN TGX", plate: "D-88210", type: "Truck (FTL)", capacity: 25, driver: "Yousef Al Harthy", status: "idle" },
+  { id: "VEH-04", name: "Mercedes Actros", plate: "D-30192", type: "Refrigerated", capacity: 18, driver: "Unassigned", status: "maintenance" },
+  { id: "VEH-05", name: "Isuzu FVR", plate: "D-55674", type: "Truck (LTL)", capacity: 12, driver: "Omar Al Lawati", status: "active" },
+]
+
+export const providerRevenue = [
+  { month: "Jan", revenue: 5200 },
+  { month: "Feb", revenue: 6100 },
+  { month: "Mar", revenue: 7400 },
+  { month: "Apr", revenue: 6900 },
+  { month: "May", revenue: 8920 },
+  { month: "Jun", revenue: 9600 },
+]
+
+// Driver loads & trips
+export type Load = {
+  id: string
+  origin: string
+  destination: string
+  cargo: string
+  weight: number
+  distance: number
+  payout: number
+  pickupDate: string
+}
+
+export const driverLoads: Load[] = [
+  { id: "LD-2041", origin: "Muscat", destination: "Dubai", cargo: "General Cargo", weight: 20, distance: 470, payout: 320, pickupDate: "25 May 2024" },
+  { id: "LD-2042", origin: "Sohar", destination: "Abu Dhabi", cargo: "Building Materials", weight: 18, distance: 380, payout: 280, pickupDate: "26 May 2024" },
+  { id: "LD-2043", origin: "Muscat", destination: "Doha", cargo: "FMCG", weight: 12, distance: 890, payout: 540, pickupDate: "27 May 2024" },
+  { id: "LD-2044", origin: "Salalah", destination: "Muscat", cargo: "Electronics", weight: 8, distance: 1020, payout: 610, pickupDate: "28 May 2024" },
+]
+
+export type Trip = {
+  id: string
+  origin: string
+  destination: string
+  status: ShipmentStatus
+  progress: number
+  eta: string
+  payout: number
+}
+
+export const driverTrips: Trip[] = [
+  { id: "TR-3012", origin: "Salalah", destination: "Doha", status: "inTransit", progress: 62, eta: "26 May, 14:00", payout: 540 },
+  { id: "TR-3008", origin: "Muscat", destination: "Dubai", status: "delivered", progress: 100, eta: "Delivered 20 May", payout: 320 },
+  { id: "TR-3005", origin: "Sohar", destination: "Riyadh", status: "delivered", progress: 100, eta: "Delivered 14 May", payout: 480 },
+]
+
+export const driverKpis = {
+  activeTrips: 1,
+  completedTrips: 42,
+  thisMonth: 2840,
+  pendingPayout: 540,
+  rating: 4.8,
+}
+
+export const driverEarnings = [
+  { month: "Jan", earnings: 1980 },
+  { month: "Feb", earnings: 2240 },
+  { month: "Mar", earnings: 2610 },
+  { month: "Apr", earnings: 2380 },
+  { month: "May", earnings: 2840 },
+  { month: "Jun", earnings: 3050 },
+]
+
+export type Payout = {
+  id: string
+  trip: string
+  route: string
+  amount: number
+  date: string
+  status: InvoiceStatus
+}
+
+export const payouts: Payout[] = [
+  { id: "PO-9021", trip: "TR-3012", route: "Salalah → Doha", amount: 540, date: "26 May 2024", status: "unpaid" },
+  { id: "PO-9018", trip: "TR-3008", route: "Muscat → Dubai", amount: 320, date: "20 May 2024", status: "paid" },
+  { id: "PO-9015", trip: "TR-3005", route: "Sohar → Riyadh", amount: 480, date: "14 May 2024", status: "paid" },
+]
+
+// Admin
+export type AdminUser = {
+  id: string
+  name: string
+  email: string
+  role: "client" | "provider" | "driver"
+  company: string
+  joined: string
+  status: "approved" | "pending" | "suspended"
+}
+
+export const adminUsers: AdminUser[] = [
+  { id: "U-1001", name: "Ahmed Al Balushi", email: "ahmed@company.com", role: "client", company: "Al Noor Trading LLC", joined: "12 Jan 2024", status: "approved" },
+  { id: "U-1002", name: "Nasser Al Haddad", email: "nasser@logistics.com", role: "provider", company: "Gulf Freight Co.", joined: "03 Feb 2024", status: "approved" },
+  { id: "U-1003", name: "Khalid Al Rawahi", email: "khalid@driver.com", role: "driver", company: "Independent", joined: "18 Feb 2024", status: "approved" },
+  { id: "U-1004", name: "Fatima Al Zadjali", email: "fatima@desertlink.com", role: "provider", company: "Desert Link Logistics", joined: "22 Mar 2024", status: "pending" },
+  { id: "U-1005", name: "Salim Al Hinai", email: "salim@swiftcargo.com", role: "provider", company: "Swift Cargo", joined: "01 Apr 2024", status: "suspended" },
+  { id: "U-1006", name: "Mariam Al Saadi", email: "mariam@trade.com", role: "client", company: "Saadi Trading", joined: "09 Apr 2024", status: "approved" },
+]
+
+export type Verification = {
+  id: string
+  company: string
+  applicant: string
+  role: "provider" | "driver"
+  documents: number
+  submitted: string
+  status: "pending" | "approved" | "rejected"
+}
+
+export const verifications: Verification[] = [
+  { id: "VER-01", company: "Desert Link Logistics", applicant: "Fatima Al Zadjali", role: "provider", documents: 4, submitted: "22 Mar 2024", status: "pending" },
+  { id: "VER-02", company: "Swift Cargo", applicant: "Salim Al Hinai", role: "provider", documents: 3, submitted: "24 Mar 2024", status: "pending" },
+  { id: "VER-03", company: "Independent", applicant: "Omar Al Lawati", role: "driver", documents: 5, submitted: "25 Mar 2024", status: "pending" },
+  { id: "VER-04", company: "Coastal Freight", applicant: "Hamed Al Maamari", role: "provider", documents: 4, submitted: "26 Mar 2024", status: "pending" },
+]
+
+export type Announcement = {
+  id: string
+  title: string
+  body: string
+  audience: string
+  date: string
+  status: "published" | "draft"
+}
+
+export const announcements: Announcement[] = [
+  { id: "AN-01", title: "New Ramadan delivery schedule", body: "Adjusted pickup windows during Ramadan across all GCC routes.", audience: "All users", date: "20 May 2024", status: "published" },
+  { id: "AN-02", title: "SmartMatch v2 rollout", body: "Improved matching accuracy with new route compatibility scoring.", audience: "Providers", date: "15 May 2024", status: "published" },
+  { id: "AN-03", title: "Scheduled maintenance", body: "Platform maintenance on 30 May, 02:00-04:00 GST.", audience: "All users", date: "12 May 2024", status: "draft" },
+]
+
+export const adminKpis = {
+  totalUsers: 1284,
+  activeShipments: 168,
+  gmv: 482300,
+  pendingVerifications: 4,
+}
+
+export const platformGrowth = [
+  { month: "Jan", users: 620, shipments: 84 },
+  { month: "Feb", users: 760, shipments: 102 },
+  { month: "Mar", users: 910, shipments: 128 },
+  { month: "Apr", users: 1080, shipments: 145 },
+  { month: "May", users: 1284, shipments: 168 },
+  { month: "Jun", users: 1460, shipments: 192 },
+]
+
+export const userBreakdown = [
+  { type: "Clients", value: 720 },
+  { type: "Providers", value: 384 },
+  { type: "Drivers", value: 180 },
+]
