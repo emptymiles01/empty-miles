@@ -227,6 +227,27 @@ export const dictionaries = {
     "inv.paidThisMonth": "Paid This Month",
     "inv.overdue": "Overdue",
 
+    // Analytics
+    "analytics.title": "Analytics",
+    "analytics.subtitle": "Insights into your shipping activity and savings.",
+    "analytics.totalSpend": "Total Spend",
+    "analytics.totalSavings": "Total Savings",
+    "analytics.totalShipments": "Total Shipments",
+    "analytics.activeRoutes": "Active Routes",
+    "analytics.savingsTrend": "Spend vs. Savings",
+    "analytics.routeVolume": "Top Routes by Volume",
+
+    // Address Book
+    "address.title": "Address Book",
+    "address.subtitle": "Manage your saved pickup and delivery locations.",
+    "address.add": "Add Address",
+    "address.name": "Label",
+    "address.contact": "Contact",
+    "address.city": "City",
+    "address.type": "Type",
+    "address.pickup": "Pickup",
+    "address.delivery": "Delivery",
+
     // Settings
     "settings.title": "Settings",
     "settings.subtitle": "Manage your account and preferences.",
@@ -461,6 +482,27 @@ export const dictionaries = {
     "inv.totalOutstanding": "إجمالي المستحقات",
     "inv.paidThisMonth": "المدفوع هذا الشهر",
     "inv.overdue": "متأخر",
+
+    // Analytics
+    "analytics.title": "التحليلات",
+    "analytics.subtitle": "رؤى حول نشاط الشحن والتوفير.",
+    "analytics.totalSpend": "إجمالي الإنفاق",
+    "analytics.totalSavings": "إجمالي التوفير",
+    "analytics.totalShipments": "إجمالي الشحنات",
+    "analytics.activeRoutes": "المسارات النشطة",
+    "analytics.savingsTrend": "الإنفاق مقابل التوفير",
+    "analytics.routeVolume": "أهم المسارات حسب الحجم",
+
+    // Address Book
+    "address.title": "دفتر العناوين",
+    "address.subtitle": "إدارة مواقع الاستلام والتسليم المحفوظة.",
+    "address.add": "إضافة عنوان",
+    "address.name": "التسمية",
+    "address.contact": "جهة الاتصال",
+    "address.city": "المدينة",
+    "address.type": "النوع",
+    "address.pickup": "استلام",
+    "address.delivery": "تسليم",
 
     "settings.title": "الإعدادات",
     "settings.subtitle": "إدارة حسابك وتفضيلاتك.",

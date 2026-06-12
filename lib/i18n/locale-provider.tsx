@@ -69,3 +69,6 @@ export function useLocale() {
   if (!ctx) throw new Error("useLocale must be used within a LocaleProvider")
   return ctx
 }
+
+// Alias for ergonomic imports across the app.
+export const useI18n = useLocale

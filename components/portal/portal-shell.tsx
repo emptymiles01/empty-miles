@@ -4,22 +4,32 @@ import { useState } from "react"
 import { Sheet, SheetContent, SheetTitle } from "@/components/ui/sheet"
 import { PortalSidebar } from "./portal-sidebar"
 import { PortalTopbar } from "./portal-topbar"
-import type { PortalConfig } from "@/lib/nav-config"
+import { type Portal, type PortalConfig, portalConfigs } from "@/lib/nav-config"
 import { useLocale } from "@/lib/i18n/locale-provider"
 
 export function PortalShell({
-  config,
+  config: configProp,
+  portal,
   title,
+  titleKey,
   subtitle,
+  subtitleKey,
   children,
 }: {
-  config: PortalConfig
-  title: string
+  config?: PortalConfig
+  portal?: Portal
+  title?: string
+  titleKey?: string
   subtitle?: string
+  subtitleKey?: string
   children: React.ReactNode
 }) {
   const [mobileOpen, setMobileOpen] = useState(false)
-  const { dir } = useLocale()
+  const { dir, t } = useLocale()
+
+  const config = configProp ?? portalConfigs[portal ?? "client"]
+  const resolvedTitle = title ?? (titleKey ? t(titleKey as never) : "")
+  const resolvedSubtitle = subtitle ?? (subtitleKey ? t(subtitleKey as never) : undefined)
 
   return (
     <div className="flex min-h-screen bg-muted/40">
@@ -39,8 +49,8 @@ export function PortalShell({
       <div className="flex min-w-0 flex-1 flex-col">
         <PortalTopbar
           config={config}
-          title={title}
-          subtitle={subtitle}
+          title={resolvedTitle}
+          subtitle={resolvedSubtitle}
           onOpenSidebar={() => setMobileOpen(true)}
         />
         <main className="flex-1 p-4 lg:p-6">{children}</main>
