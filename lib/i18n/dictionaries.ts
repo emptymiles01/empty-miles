@@ -265,6 +265,9 @@ export const dictionaries = {
 
     // Tracking
     "track.title": "Shipment Tracking",
+    "track.provider": "Provider",
+    "shipments.id": "Shipment ID",
+    "shipments.progress": "Progress",
     "track.subtitle": "Real-time location and status updates.",
     "track.eta": "Estimated Arrival",
     "track.currentLocation": "Current Location",
@@ -386,7 +389,7 @@ export const dictionaries = {
     "common.help": "تحتاج مساعدة؟",
     "common.helpText": "تواصل مع فريق الدعم في أي وقت.",
     "common.contactSupport": "تواصل مع الدعم",
-    "common.notifications": "الإشعارات",
+    "common.notifications": "الإ��عارات",
     "common.markAllRead": "تحديد الكل كمقروء",
     "common.noResults": "لا توجد نتائج",
     "common.loading": "جاري التحميل...",
@@ -597,6 +600,9 @@ export const dictionaries = {
     "settings.saveChanges": "حفظ التغييرات",
 
     "track.title": "تتبع الشحنة",
+    "track.provider": "مزود الخدمة",
+    "shipments.id": "رقم الشحنة",
+    "shipments.progress": "التقدم",
     "track.subtitle": "تحديثات الموقع والحالة في الوقت الفعلي.",
     "track.eta": "الوصول المتوقع",
     "track.currentLocation": "الموقع الحالي",
