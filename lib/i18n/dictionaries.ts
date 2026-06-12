@@ -343,6 +343,11 @@ export const dictionaries = {
     "track.timeline": "Timeline",
     "track.driver": "Driver",
     "track.vehicle": "Vehicle",
+    "track.tl.created": "Request created",
+    "track.tl.assigned": "Provider assigned",
+    "track.tl.pickedUp": "Cargo picked up",
+    "track.tl.inTransit": "In transit",
+    "track.tl.delivered": "Delivered",
 
     // Provider portal
     "prov.availableCapacity": "Available Capacity",
@@ -747,6 +752,11 @@ export const dictionaries = {
     "track.timeline": "الجدول الزمني",
     "track.driver": "السائق",
     "track.vehicle": "المركبة",
+    "track.tl.created": "تم إنشاء الطلب",
+    "track.tl.assigned": "تم تعيين مزود الخدمة",
+    "track.tl.pickedUp": "تم استلام الشحنة",
+    "track.tl.inTransit": "قيد النقل",
+    "track.tl.delivered": "تم التوصيل",
 
     // Provider portal
     "prov.availableCapacity": "السعة المتاحة",

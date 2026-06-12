@@ -16,8 +16,8 @@ export function LandingNav() {
   const links: { key: string; href: string }[] = [
     { key: "landing.nav.home", href: "#top" },
     { key: "landing.nav.solutions", href: "#solutions" },
-    { key: "landing.nav.forProviders", href: "#routes" },
-    { key: "landing.nav.company", href: "#how" },
+    { key: "landing.nav.forProviders", href: "#how" },
+    { key: "landing.nav.company", href: "#routes" },
     { key: "landing.nav.resources", href: "#testimonials" },
   ]
 

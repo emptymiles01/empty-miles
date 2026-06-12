@@ -22,11 +22,11 @@ export default function ShipmentTrackingPage({ params }: { params: Promise<{ id:
   if (!shipment) notFound()
 
   const timeline = [
-    { label: "Request created", time: "14 May, 09:12", done: true },
-    { label: "Provider assigned", time: "15 May, 11:40", done: shipment.progress > 0 },
-    { label: "Cargo picked up", time: "16 May, 08:00", done: shipment.progress >= 18 },
-    { label: "In transit", time: "—", done: shipment.progress >= 50 },
-    { label: "Delivered", time: shipment.status === "delivered" ? shipment.eta : "—", done: shipment.progress >= 100 },
+    { labelKey: "track.tl.created", time: "14 May, 09:12", done: true },
+    { labelKey: "track.tl.assigned", time: "15 May, 11:40", done: shipment.progress > 0 },
+    { labelKey: "track.tl.pickedUp", time: "16 May, 08:00", done: shipment.progress >= 18 },
+    { labelKey: "track.tl.inTransit", time: "—", done: shipment.progress >= 50 },
+    { labelKey: "track.tl.delivered", time: shipment.status === "delivered" ? shipment.eta : "—", done: shipment.progress >= 100 },
   ]
 
   return (
@@ -87,17 +87,17 @@ export default function ShipmentTrackingPage({ params }: { params: Promise<{ id:
                   <li key={i} className="flex gap-3">
                     <div className="flex flex-col items-center">
                       {step.done ? (
-                        <CheckCircle2 className="size-5 text-success" />
+                        <CheckCircle2 className="size-5 shrink-0 text-success" />
                       ) : (
-                        <Circle className="size-5 text-muted-foreground/40" />
+                        <Circle className="size-5 shrink-0 text-muted-foreground/40" />
                       )}
                       {i < timeline.length - 1 && (
-                        <span className={`mt-1 w-px flex-1 ${step.done ? "bg-success/40" : "bg-border"}`} />
+                        <span className={`mt-1 w-px flex-1 min-h-6 ${step.done ? "bg-success/40" : "bg-border"}`} />
                       )}
                     </div>
-                    <div className="-mt-0.5 pb-1">
+                    <div className="-mt-0.5 pb-4">
                       <p className={`text-sm font-medium ${step.done ? "text-foreground" : "text-muted-foreground"}`}>
-                        {step.label}
+                        {t(step.labelKey as never)}
                       </p>
                       <p className="text-xs text-muted-foreground">{step.time}</p>
                     </div>

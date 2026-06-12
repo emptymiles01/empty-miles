@@ -87,7 +87,7 @@ export const portalConfigs: Record<Portal, PortalConfig> = {
   admin: {
     portal: "admin",
     basePath: "/admin",
-    brandVariant: "dark",
+    brandVariant: "light",
     roleKey: "role.admin",
     nav: [
       { href: "/admin", labelKey: "nav.dashboard", icon: LayoutDashboard },

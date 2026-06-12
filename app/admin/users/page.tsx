@@ -92,7 +92,7 @@ export default function AdminUsersPage() {
                 <TableHead>{t("adm.role")}</TableHead>
                 <TableHead className="hidden md:table-cell">{t("adm.company")}</TableHead>
                 <TableHead className="hidden lg:table-cell">{t("adm.joined")}</TableHead>
-                <TableHead>{t("adm.role")}</TableHead>
+                <TableHead>{t("common.status")}</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
