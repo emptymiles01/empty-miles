@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { cn } from "@/lib/utils"
 import { useLocale } from "@/lib/i18n/locale-provider"
+import { toast } from "sonner"
 import type { MatchProvider } from "@/lib/data"
 
 function scoreTone(score: number) {
@@ -18,6 +19,16 @@ function scoreTone(score: number) {
 export function MatchCard({ provider }: { provider: MatchProvider }) {
   const { t } = useLocale()
   const [open, setOpen] = useState(false)
+  const [accepted, setAccepted] = useState(false)
+
+  function handleAccept() {
+    setAccepted(true)
+    toast.success(`${provider.name} — ${t("smart.accept")}`)
+  }
+
+  function handleViewProfile() {
+    toast.info(`${provider.name} — ${t("smart.viewProfile")}`)
+  }
 
   return (
     <Card className="gap-0 p-4">
@@ -56,10 +67,12 @@ export function MatchCard({ provider }: { provider: MatchProvider }) {
           <p className="font-heading text-lg font-bold">OMR {provider.price}</p>
         </div>
         <div className="flex gap-2">
-          <Button variant="outline" size="sm">
+          <Button variant="outline" size="sm" onClick={handleViewProfile}>
             {t("smart.viewProfile")}
           </Button>
-          <Button size="sm">{t("smart.accept")}</Button>
+          <Button size="sm" onClick={handleAccept} disabled={accepted} className={accepted ? "bg-success hover:bg-success" : ""}>
+            {accepted ? t("common.accepted") : t("smart.accept")}
+          </Button>
         </div>
       </div>
 

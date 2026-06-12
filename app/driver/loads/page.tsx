@@ -1,5 +1,6 @@
 "use client"
 
+import { useState } from "react"
 import { PortalShell } from "@/components/portal/portal-shell"
 import { PageHeader } from "@/components/shared/page-header"
 import { RouteLabel } from "@/components/shared/route-label"
@@ -8,9 +9,16 @@ import { Button } from "@/components/ui/button"
 import { Package, Route, CalendarClock } from "lucide-react"
 import { driverLoads } from "@/lib/data"
 import { useI18n } from "@/lib/i18n/locale-provider"
+import { toast } from "sonner"
 
 export default function DriverLoadsPage() {
   const { t } = useI18n()
+  const [accepted, setAccepted] = useState<Set<string>>(new Set())
+
+  function handleAccept(id: string) {
+    setAccepted((prev) => new Set(prev).add(id))
+    toast.success(t("common.accepted"))
+  }
 
   return (
     <PortalShell portal="driver" titleKey="nav.availableLoads">
@@ -52,8 +60,13 @@ export default function DriverLoadsPage() {
                   </span>
                 </div>
 
-                <Button size="sm" className="w-full">
-                  {t("drv.accept")}
+                <Button
+                  size="sm"
+                  className={`w-full ${accepted.has(load.id) ? "bg-success hover:bg-success" : ""}`}
+                  disabled={accepted.has(load.id)}
+                  onClick={() => handleAccept(load.id)}
+                >
+                  {accepted.has(load.id) ? t("common.accepted") : t("drv.accept")}
                 </Button>
               </CardContent>
             </Card>

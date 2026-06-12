@@ -10,6 +10,7 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@
 import { invoices } from "@/lib/data"
 import { useI18n } from "@/lib/i18n/locale-provider"
 import { CircleDollarSign, Download, FileText, TriangleAlert } from "lucide-react"
+import { toast } from "sonner"
 
 export default function InvoicesPage() {
   const { t } = useI18n()
@@ -21,7 +22,7 @@ export default function InvoicesPage() {
   return (
     <PortalShell portal="client" titleKey="nav.invoices">
       <PageHeader titleKey="inv.title" subtitleKey="inv.subtitle">
-        <Button variant="outline">
+        <Button variant="outline" onClick={() => toast.success(t("common.exportedSuccess"))}>
           <Download data-icon="inline-start" />
           {t("common.export")}
         </Button>
@@ -59,7 +60,7 @@ export default function InvoicesPage() {
                     <StatusBadge status={inv.status} />
                   </TableCell>
                   <TableCell className="text-end">
-                    <Button variant="ghost" size="sm">
+                    <Button variant="ghost" size="sm" onClick={() => toast.success(`${inv.id} — ${t("common.downloadedSuccess")}`)}>
                       <Download data-icon="inline-start" />
                       {t("common.download")}
                     </Button>

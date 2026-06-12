@@ -7,6 +7,7 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { incomingRequests } from "@/lib/data"
 import { useI18n } from "@/lib/i18n/locale-provider"
+import { toast } from "sonner"
 
 export default function ProviderRequestsPage() {
   const { t } = useI18n()
@@ -34,10 +35,10 @@ export default function ProviderRequestsPage() {
                   {r.weight} Tons · {r.cargoType} · {r.date}
                 </p>
                 <div className="flex items-center gap-2">
-                  <Button variant="outline" size="sm" className="flex-1">
+                  <Button variant="outline" size="sm" className="flex-1" onClick={() => toast.info(`${r.id} — ${t("prov.view")}`)}>
                     {t("prov.view")}
                   </Button>
-                  <Button size="sm" className="flex-1">
+                  <Button size="sm" className="flex-1" onClick={() => toast.success(`${r.id} — ${t("prov.respond")}`)}>
                     {t("prov.respond")}
                   </Button>
                 </div>

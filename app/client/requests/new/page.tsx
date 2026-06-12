@@ -162,7 +162,7 @@ export default function CreateRequestPage() {
         </Card>
 
         <div className="flex flex-wrap justify-end gap-3">
-          <Button type="button" variant="outline">
+          <Button type="button" variant="outline" onClick={() => toast.success(t("common.draftSaved"))}>
             {t("create.saveDraft")}
           </Button>
           <Button type="submit" disabled={submitting}>

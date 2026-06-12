@@ -10,6 +10,7 @@ import { Field, FieldGroup, FieldLabel } from "@/components/ui/field"
 import { Separator } from "@/components/ui/separator"
 import { SocialButtons } from "@/components/auth/social-buttons"
 import { useLocale } from "@/lib/i18n/locale-provider"
+import { toast } from "sonner"
 
 export function LoginForm() {
   const { t } = useLocale()
@@ -17,10 +18,23 @@ export function LoginForm() {
   const [show, setShow] = useState(false)
   const [email, setEmail] = useState("ahmed@company.com")
   const [password, setPassword] = useState("password123")
+  const [role, setRole] = useState<"client" | "provider" | "driver" | "admin">("client")
+
+  const roleRoutes: Record<string, string> = {
+    client: "/client",
+    provider: "/provider",
+    driver: "/driver",
+    admin: "/admin",
+  }
 
   function onSubmit(e: React.FormEvent) {
     e.preventDefault()
-    router.push("/client/dashboard")
+    router.push(roleRoutes[role] ?? "/client")
+  }
+
+  function onForgotPassword(e: React.MouseEvent) {
+    e.preventDefault()
+    toast.info(t("auth.forgotPassword") + " — " + t("auth.forgotPasswordToast"))
   }
 
   return (
@@ -32,6 +46,26 @@ export function LoginForm() {
 
       <form onSubmit={onSubmit} className="mt-6">
         <FieldGroup>
+          {/* Role selector */}
+          <Field>
+            <FieldLabel>{t("auth.iAmA")}</FieldLabel>
+            <div className="grid grid-cols-4 gap-2">
+              {(["client", "provider", "driver", "admin"] as const).map((r) => (
+                <button
+                  key={r}
+                  type="button"
+                  onClick={() => setRole(r)}
+                  className={`rounded-lg border px-2 py-2 text-xs font-semibold capitalize transition-colors ${
+                    role === r
+                      ? "border-primary bg-primary/5 text-primary"
+                      : "border-border hover:bg-muted text-muted-foreground"
+                  }`}
+                >
+                  {t(`role.${r}` as never)}
+                </button>
+              ))}
+            </div>
+          </Field>
           <Field>
             <FieldLabel htmlFor="email">{t("auth.email")}</FieldLabel>
             <Input id="email" type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
@@ -39,9 +73,13 @@ export function LoginForm() {
           <Field>
             <div className="flex items-center justify-between">
               <FieldLabel htmlFor="password">{t("auth.password")}</FieldLabel>
-              <Link href="#" className="text-xs font-medium text-primary hover:underline">
+              <button
+                type="button"
+                onClick={onForgotPassword}
+                className="text-xs font-medium text-primary hover:underline"
+              >
                 {t("auth.forgotPassword")}
-              </Link>
+              </button>
             </div>
             <div className="relative">
               <Input

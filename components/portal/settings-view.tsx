@@ -15,17 +15,28 @@ import { currentUser } from "@/lib/data"
 import type { Portal } from "@/lib/nav-config"
 import { useI18n } from "@/lib/i18n/locale-provider"
 import type { Locale } from "@/lib/i18n/config"
-
-const notificationItems = [
-  { key: "New SmartMatch results", desc: "Get notified when new matches are found" },
-  { key: "Shipment status updates", desc: "Track pickup, transit and delivery events" },
-  { key: "Invoice and billing", desc: "Reminders for due and overdue payments" },
-  { key: "Platform messages", desc: "Quotes, chat messages and announcements" },
-]
+import { toast } from "sonner"
 
 export function SettingsView({ portal }: { portal: Portal }) {
   const { t, locale, setLocale } = useI18n()
   const user = currentUser[portal]
+
+  const notificationItems = [
+    { key: "matches", defaultChecked: true },
+    { key: "shipments", defaultChecked: true },
+    { key: "billing", defaultChecked: true },
+    { key: "messages", defaultChecked: false },
+  ]
+
+  function handleSaveProfile(e: React.FormEvent) {
+    e.preventDefault()
+    toast.success(t("settings.savedSuccess"))
+  }
+
+  function handleSaveSecurity(e: React.FormEvent) {
+    e.preventDefault()
+    toast.success(t("settings.passwordUpdated"))
+  }
 
   return (
     <PortalShell portal={portal} titleKey="nav.settings">
@@ -39,49 +50,53 @@ export function SettingsView({ portal }: { portal: Portal }) {
           <TabsTrigger value="preferences">{t("settings.preferences")}</TabsTrigger>
         </TabsList>
 
+        {/* Profile */}
         <TabsContent value="profile">
           <Card>
-            <CardHeader>
-              <CardTitle>{t("settings.profile")}</CardTitle>
-              <CardDescription>{t("settings.subtitle")}</CardDescription>
-            </CardHeader>
-            <CardContent className="flex flex-col gap-6">
-              <div className="flex items-center gap-4">
-                <Avatar className="size-16">
-                  <AvatarImage src={user.avatar || "/placeholder.svg"} alt={user.name} />
-                  <AvatarFallback>{user.initials}</AvatarFallback>
-                </Avatar>
-                <Button variant="outline" size="sm">
-                  {t("common.edit")}
-                </Button>
-              </div>
-              <FieldGroup>
-                <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-                  <Field>
-                    <FieldLabel htmlFor="name">{t("auth.fullName")}</FieldLabel>
-                    <Input id="name" defaultValue={user.name} />
-                  </Field>
-                  <Field>
-                    <FieldLabel htmlFor="company">{t("settings.company")}</FieldLabel>
-                    <Input id="company" defaultValue={user.company} />
-                  </Field>
-                  <Field>
-                    <FieldLabel htmlFor="email">{t("auth.email")}</FieldLabel>
-                    <Input id="email" type="email" defaultValue={user.email} />
-                  </Field>
-                  <Field>
-                    <FieldLabel htmlFor="phone">{t("settings.phone")}</FieldLabel>
-                    <Input id="phone" type="tel" defaultValue="+968 9123 4567" dir="ltr" />
-                  </Field>
+            <form onSubmit={handleSaveProfile}>
+              <CardHeader>
+                <CardTitle>{t("settings.profile")}</CardTitle>
+                <CardDescription>{t("settings.subtitle")}</CardDescription>
+              </CardHeader>
+              <CardContent className="flex flex-col gap-6">
+                <div className="flex items-center gap-4">
+                  <Avatar className="size-16">
+                    <AvatarImage src={user.avatar || "/placeholder.svg"} alt={user.name} />
+                    <AvatarFallback>{user.initials}</AvatarFallback>
+                  </Avatar>
+                  <Button type="button" variant="outline" size="sm" onClick={() => toast.info(t("settings.uploadPhoto"))}>
+                    {t("settings.uploadPhoto")}
+                  </Button>
                 </div>
-              </FieldGroup>
-            </CardContent>
-            <CardFooter>
-              <Button>{t("settings.saveChanges")}</Button>
-            </CardFooter>
+                <FieldGroup>
+                  <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                    <Field>
+                      <FieldLabel htmlFor="name">{t("auth.fullName")}</FieldLabel>
+                      <Input id="name" defaultValue={user.name} />
+                    </Field>
+                    <Field>
+                      <FieldLabel htmlFor="company">{t("settings.company")}</FieldLabel>
+                      <Input id="company" defaultValue={user.company} />
+                    </Field>
+                    <Field>
+                      <FieldLabel htmlFor="email">{t("auth.email")}</FieldLabel>
+                      <Input id="email" type="email" defaultValue={user.email} />
+                    </Field>
+                    <Field>
+                      <FieldLabel htmlFor="phone">{t("settings.phone")}</FieldLabel>
+                      <Input id="phone" type="tel" defaultValue="+968 9123 4567" dir="ltr" />
+                    </Field>
+                  </div>
+                </FieldGroup>
+              </CardContent>
+              <CardFooter>
+                <Button type="submit">{t("settings.saveChanges")}</Button>
+              </CardFooter>
+            </form>
           </Card>
         </TabsContent>
 
+        {/* Notifications */}
         <TabsContent value="notifications">
           <Card>
             <CardHeader>
@@ -93,10 +108,17 @@ export function SettingsView({ portal }: { portal: Portal }) {
                   {i > 0 && <Separator />}
                   <div className="flex items-center justify-between gap-4 py-4">
                     <div className="flex flex-col gap-0.5">
-                      <span className="text-sm font-medium text-foreground">{item.key}</span>
-                      <span className="text-sm text-muted-foreground">{item.desc}</span>
+                      <span className="text-sm font-medium text-foreground">
+                        {t(`settings.notif.${item.key}` as never)}
+                      </span>
+                      <span className="text-sm text-muted-foreground">
+                        {t(`settings.notif.${item.key}Desc` as never)}
+                      </span>
                     </div>
-                    <Switch defaultChecked={i < 3} />
+                    <Switch
+                      defaultChecked={item.defaultChecked}
+                      onCheckedChange={(v) => toast.success(`${t(`settings.notif.${item.key}` as never)}: ${v ? "on" : "off"}`)}
+                    />
                   </div>
                 </div>
               ))}
@@ -104,30 +126,34 @@ export function SettingsView({ portal }: { portal: Portal }) {
           </Card>
         </TabsContent>
 
+        {/* Security */}
         <TabsContent value="security">
           <Card>
-            <CardHeader>
-              <CardTitle>{t("settings.security")}</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <FieldGroup>
-                <Field>
-                  <FieldLabel htmlFor="current">{t("auth.password")}</FieldLabel>
-                  <Input id="current" type="password" placeholder="••••••••••" />
-                </Field>
-                <Field>
-                  <FieldLabel htmlFor="new">New Password</FieldLabel>
-                  <Input id="new" type="password" placeholder="••••••••••" />
-                  <FieldDescription>Use at least 8 characters with a mix of letters and numbers.</FieldDescription>
-                </Field>
-              </FieldGroup>
-            </CardContent>
-            <CardFooter>
-              <Button>{t("settings.saveChanges")}</Button>
-            </CardFooter>
+            <form onSubmit={handleSaveSecurity}>
+              <CardHeader>
+                <CardTitle>{t("settings.security")}</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <FieldGroup>
+                  <Field>
+                    <FieldLabel htmlFor="current">{t("settings.currentPassword")}</FieldLabel>
+                    <Input id="current" type="password" placeholder="••••••••••" required />
+                  </Field>
+                  <Field>
+                    <FieldLabel htmlFor="new">{t("settings.newPassword")}</FieldLabel>
+                    <Input id="new" type="password" placeholder="••••••••••" required />
+                    <FieldDescription>{t("settings.newPasswordHint")}</FieldDescription>
+                  </Field>
+                </FieldGroup>
+              </CardContent>
+              <CardFooter>
+                <Button type="submit">{t("settings.saveChanges")}</Button>
+              </CardFooter>
+            </form>
           </Card>
         </TabsContent>
 
+        {/* Preferences */}
         <TabsContent value="preferences">
           <Card>
             <CardHeader>
@@ -146,7 +172,7 @@ export function SettingsView({ portal }: { portal: Portal }) {
                       <SelectItem value="ar">العربية</SelectItem>
                     </SelectContent>
                   </Select>
-                  <FieldDescription>Changes the interface language and text direction.</FieldDescription>
+                  <FieldDescription>{t("settings.langHint")}</FieldDescription>
                 </Field>
               </FieldGroup>
             </CardContent>

@@ -11,6 +11,7 @@ import { Button } from "@/components/ui/button"
 import { portalConfigs } from "@/lib/nav-config"
 import { matchProviders, requests } from "@/lib/data"
 import { useLocale } from "@/lib/i18n/locale-provider"
+import { toast } from "sonner"
 
 export default function ClientMatchesPage() {
   const { t } = useLocale()
@@ -42,7 +43,7 @@ export default function ClientMatchesPage() {
             <span className="text-xs text-muted-foreground">
               {t("smart.requestId")}: {request.id}
             </span>
-            <Button variant="outline" size="sm">
+            <Button variant="outline" size="sm" render={<Link href="/client/requests/new" />}>
               {t("smart.changeRequest")}
             </Button>
           </div>
@@ -54,7 +55,7 @@ export default function ClientMatchesPage() {
             {matchProviders.map((p) => (
               <MatchCard key={p.id} provider={p} />
             ))}
-            <Button variant="outline" className="mt-1 w-full">
+            <Button variant="outline" className="mt-1 w-full" onClick={() => toast.info(t("common.loading"))}>
               {t("common.loadMore")}
             </Button>
           </div>
