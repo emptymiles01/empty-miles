@@ -23,7 +23,7 @@ export function LandingHero() {
   ]
 
   return (
-    <section className="relative overflow-hidden bg-navy text-navy-foreground">
+    <section id="top" className="relative overflow-hidden bg-navy text-navy-foreground">
       {/* Hero image */}
       <div className="absolute inset-y-0 end-0 hidden w-[52%] lg:block">
         <img

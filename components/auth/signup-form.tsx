@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 import Link from "next/link"
-import { useRouter } from "next/navigation"
+import { useRouter, useSearchParams } from "next/navigation"
 import { Eye, EyeOff, Package, Truck, Check } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -17,7 +17,9 @@ type Role = "client" | "provider"
 export function SignupForm() {
   const { t } = useLocale()
   const router = useRouter()
-  const [role, setRole] = useState<Role>("client")
+  const searchParams = useSearchParams()
+  const initialRole: Role = searchParams.get("role") === "provider" ? "provider" : "client"
+  const [role, setRole] = useState<Role>(initialRole)
   const [show, setShow] = useState(false)
 
   const roleCards: { value: Role; icon: typeof Package; title: string; desc: string }[] = [
