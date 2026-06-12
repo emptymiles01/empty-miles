@@ -181,20 +181,37 @@ export const documents: DocumentItem[] = [
 
 export type NotificationItem = {
   id: string
-  titleKey: string
   title: string
+  titleAr: string
   body: string
+  bodyAr: string
   time: string
-  unread: boolean
+  read: boolean
   kind: "match" | "shipment" | "invoice" | "message"
 }
 
 export const notifications: NotificationItem[] = [
-  { id: "N1", titleKey: "", title: "8 new matches found", body: "For request Muscat → Dubai (REQ-2024-1256)", time: "5m ago", unread: true, kind: "match" },
-  { id: "N2", titleKey: "", title: "Shipment in transit", body: "SHP-3012 Salalah → Doha is now en route", time: "1h ago", unread: true, kind: "shipment" },
-  { id: "N3", titleKey: "", title: "Invoice paid", body: "INV-2024-0231 has been settled", time: "3h ago", unread: false, kind: "invoice" },
-  { id: "N4", titleKey: "", title: "New message", body: "Star Logistics LLC sent you a quote", time: "Yesterday", unread: false, kind: "message" },
+  { id: "N1", title: "8 new matches found", titleAr: "8 مطابقات جديدة", body: "For request Muscat → Dubai (REQ-2024-1256)", bodyAr: "للطلب مسقط ← دبي (REQ-2024-1256)", time: "5m ago", read: false, kind: "match" },
+  { id: "N2", title: "Shipment in transit", titleAr: "شحنة قيد النقل", body: "SHP-3012 Salalah → Doha is now en route", bodyAr: "الشحنة SHP-3012 صلالة ← الدوحة في الطريق", time: "1h ago", read: false, kind: "shipment" },
+  { id: "N3", title: "Invoice paid", titleAr: "تم دفع الفاتورة", body: "INV-2024-0231 has been settled", bodyAr: "تمت تسوية الفاتورة INV-2024-0231", time: "3h ago", read: true, kind: "invoice" },
+  { id: "N4", title: "New message", titleAr: "رسالة جديدة", body: "Star Logistics LLC sent you a quote", bodyAr: "أرسلت Star Logistics عرض سعر", time: "Yesterday", read: true, kind: "message" },
 ]
+
+export type PortalUser = {
+  name: string
+  nameAr: string
+  initials: string
+  avatar: string
+  email: string
+  company: string
+}
+
+export const currentUser: Record<"client" | "provider" | "driver" | "admin", PortalUser> = {
+  client: { name: "Ahmed Al Balushi", nameAr: "أحمد البلوشي", initials: "AB", avatar: "/avatars/ahmed.png", email: "ahmed@company.com", company: "Al Noor Trading LLC" },
+  provider: { name: "Nasser Al Haddad", nameAr: "ناصر الحداد", initials: "NH", avatar: "/avatars/nasser.png", email: "nasser@logistics.com", company: "Gulf Freight Co." },
+  driver: { name: "Khalid Al Rawahi", nameAr: "خالد الرواحي", initials: "KR", avatar: "/avatars/khalid.png", email: "khalid@driver.com", company: "Independent" },
+  admin: { name: "Layla Al Said", nameAr: "ليلى السعيد", initials: "LS", avatar: "/avatars/layla.png", email: "layla@emptymiles.com", company: "Empty Miles" },
+}
 
 export type Conversation = {
   id: string

@@ -68,6 +68,11 @@ export const dictionaries = {
     "nav.disputes": "Disputes",
     "nav.reports": "Reports",
     "nav.overview": "Overview",
+    "nav.availableLoads": "Available Loads",
+    "nav.myTrips": "My Trips",
+    "nav.earnings": "Earnings",
+    "nav.verification": "Verification",
+    "nav.announcements": "Announcements",
 
     // Roles
     "role.client": "Client",
@@ -307,6 +312,11 @@ export const dictionaries = {
     "nav.disputes": "النزاعات",
     "nav.reports": "التقارير",
     "nav.overview": "نظرة عامة",
+    "nav.availableLoads": "الحمولات المتاحة",
+    "nav.myTrips": "رحلاتي",
+    "nav.earnings": "الأرباح",
+    "nav.verification": "التحقق",
+    "nav.announcements": "الإعلانات",
 
     "role.client": "عميل",
     "role.provider": "مزود خدمة",
