@@ -1,3 +1,4 @@
+import Image from "next/image"
 import { cn } from "@/lib/utils"
 
 export function Logo({
@@ -9,21 +10,13 @@ export function Logo({
 }) {
   return (
     <div className={cn("flex items-center gap-2", className)}>
-      <span
-        className={cn(
-          "relative flex size-7 items-center justify-center rounded-full",
-          variant === "light" ? "bg-primary-foreground/10" : "bg-primary/10",
-        )}
-        aria-hidden="true"
-      >
-        <span
-          className={cn(
-            "size-3.5 rounded-full border-[3px]",
-            variant === "light" ? "border-primary-foreground" : "border-primary",
-          )}
-          style={{ borderRightColor: "transparent" }}
-        />
-      </span>
+      <Image
+        src="/images/logo-icon.png"
+        alt="Empty Miles logo"
+        width={28}
+        height={28}
+        className="size-7 rounded-full object-cover"
+      />
       <span
         className={cn(
           "font-heading text-sm font-extrabold tracking-tight",

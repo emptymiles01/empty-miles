@@ -24,14 +24,16 @@ export function LandingHero() {
 
   return (
     <section id="top" className="relative overflow-hidden bg-navy text-navy-foreground">
-      {/* Hero image */}
-      <div className="absolute inset-y-0 end-0 hidden w-[52%] lg:block">
+      {/* Full-bleed hero image */}
+      <div className="absolute inset-0">
         <img
           src="/images/hero-logistics.png"
           alt="Cargo truck, airplane and container ship across the GCC"
-          className="size-full object-cover"
+          className="size-full object-cover object-center"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-navy via-navy/40 to-transparent" />
+        {/* Dark gradient overlay so text stays readable */}
+        <div className="absolute inset-0 bg-gradient-to-r from-navy/90 via-navy/70 to-navy/30" />
+        <div className="absolute inset-0 bg-gradient-to-t from-navy/80 via-transparent to-navy/20" />
       </div>
 
       <div className="relative mx-auto max-w-7xl px-6 pb-12 pt-28 lg:pt-36">
