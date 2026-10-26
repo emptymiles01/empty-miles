@@ -28,7 +28,7 @@ import {
 } from "@/components/ui/toggle-group"
 import { Search } from "lucide-react"
 
-const ROLE_FILTERS = ["all", "client", "provider", "driver"] as const
+const ROLE_FILTERS = ["all", "client", "provider", "admin"] as const
 type RoleFilter = (typeof ROLE_FILTERS)[number]
 
 const statusVariant: Record<string, "default" | "secondary" | "outline" | "destructive"> = {

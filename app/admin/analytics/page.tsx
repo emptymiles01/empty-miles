@@ -34,9 +34,9 @@ const growthConfig = {
 
 const breakdownConfig = {
   value: { label: "Users" },
-  Clients: { label: "Clients", color: "var(--chart-1)" },
+  Shippers: { label: "Shippers", color: "var(--chart-1)" },
   Providers: { label: "Providers", color: "var(--chart-2)" },
-  Drivers: { label: "Drivers", color: "var(--chart-3)" },
+  Administrators: { label: "Administrators", color: "var(--chart-3)" },
 }
 
 const PIE_COLORS = ["var(--chart-1)", "var(--chart-2)", "var(--chart-3)"]

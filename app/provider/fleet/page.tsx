@@ -55,7 +55,6 @@ export default function ProviderFleetPage() {
                     <TableHead>{t("prov.plate")}</TableHead>
                     <TableHead>{t("cap.transportType")}</TableHead>
                     <TableHead>{t("prov.capacityTons")}</TableHead>
-                    <TableHead>{t("prov.driver")}</TableHead>
                     <TableHead className="pe-6">{t("prov.statusLabel")}</TableHead>
                   </TableRow>
                 </TableHeader>
@@ -71,7 +70,6 @@ export default function ProviderFleetPage() {
                       <TableCell className="text-muted-foreground">{v.plate}</TableCell>
                       <TableCell className="text-muted-foreground">{v.type}</TableCell>
                       <TableCell>{v.capacity} Tons</TableCell>
-                      <TableCell className="text-muted-foreground">{v.driver}</TableCell>
                       <TableCell className="pe-6">
                         <Badge variant="secondary" className={cn(statusStyles[v.status])}>
                           {t(`prov.${v.status}` as never)}
@@ -115,10 +113,6 @@ export default function ProviderFleetPage() {
               <Field>
                 <FieldLabel>{t("prov.capacityTons")}</FieldLabel>
                 <Input type="number" min={1} defaultValue={20} required />
-              </Field>
-              <Field>
-                <FieldLabel>{t("prov.driver")}</FieldLabel>
-                <Input placeholder="Driver name" />
               </Field>
             </FieldGroup>
             <div className="flex justify-end gap-3">

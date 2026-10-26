@@ -1,6 +1,6 @@
 "use client"
 
-import { MapPin, Truck, User } from "lucide-react"
+import { MapPin, Truck } from "lucide-react"
 import { PortalShell } from "@/components/portal/portal-shell"
 import { PageHeader } from "@/components/shared/page-header"
 import { StatusBadge } from "@/components/shared/status-badge"
@@ -35,8 +35,8 @@ export default function ProviderShipmentsPage() {
                   {s.cargo}
                 </div>
                 <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                  <User className="size-4" />
-                  {s.driver} · {s.vehicle}
+                  <Truck className="size-4" />
+                  {s.vehicle}
                 </div>
 
                 {s.status !== "pending" && (

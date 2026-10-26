@@ -67,7 +67,6 @@ export default function ShipmentTrackingPage({ params }: { params: Promise<{ id:
                   </div>
                 </div>
                 <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
-                  <InfoRow icon={User} label={t("track.driver")} value={shipment.driver} />
                   <InfoRow icon={Truck} label={t("track.vehicle")} value={shipment.vehicle} />
                   <InfoRow icon={MapPin} label={t("track.currentLocation")} value={`${shipment.origin} region`} />
                   <InfoRow icon={Clock} label={t("track.eta")} value={shipment.eta} />

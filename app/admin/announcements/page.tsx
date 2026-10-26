@@ -100,7 +100,6 @@ export default function AdminAnnouncementsPage() {
                     <SelectItem value="all">All Users</SelectItem>
                     <SelectItem value="clients">Clients</SelectItem>
                     <SelectItem value="providers">Providers</SelectItem>
-                    <SelectItem value="drivers">Drivers</SelectItem>
                   </SelectContent>
                 </Select>
               </Field>

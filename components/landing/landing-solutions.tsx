@@ -1,7 +1,7 @@
 "use client"
 
 import Link from "next/link"
-import { Package, Truck, CarFront, Check, ArrowRight } from "lucide-react"
+import { Package, Truck, Check, ArrowRight } from "lucide-react"
 import { useLocale } from "@/lib/i18n/locale-provider"
 
 export function LandingSolutions() {
@@ -23,14 +23,6 @@ export function LandingSolutions() {
       desc: t("landing.sol.provider.desc"),
       features: [t("landing.sol.provider.f1"), t("landing.sol.provider.f2"), t("landing.sol.provider.f3")],
       featured: true,
-    },
-    {
-      icon: CarFront,
-      href: "/login",
-      title: t("landing.sol.driver.title"),
-      desc: t("landing.sol.driver.desc"),
-      features: [t("landing.sol.driver.f1"), t("landing.sol.driver.f2"), t("landing.sol.driver.f3")],
-      featured: false,
     },
   ]
 

@@ -29,7 +29,7 @@ export function PortalSidebar({
       )}
     >
       <div className="flex h-16 items-center px-5">
-        <Logo variant={dark ? "light" : "dark"} />
+        <Logo variant={dark ? "light" : "default"} />
       </div>
 
       <nav className="flex-1 overflow-y-auto px-3 py-2">
