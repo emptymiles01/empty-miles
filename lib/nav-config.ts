@@ -15,11 +15,10 @@ import {
   Users,
   ShieldCheck,
   Megaphone,
-  MapPinned,
   type LucideIcon,
 } from "lucide-react"
 
-export type Portal = "client" | "provider" | "driver" | "admin"
+export type Portal = "client" | "provider" | "admin"
 
 export type NavItem = {
   href: string
@@ -69,19 +68,6 @@ export const portalConfigs: Record<Portal, PortalConfig> = {
       { href: "/provider/analytics", labelKey: "nav.analytics", icon: BarChart3 },
       { href: "/provider/invoices", labelKey: "nav.invoices", icon: Wallet },
       { href: "/provider/settings", labelKey: "nav.settings", icon: Settings },
-    ],
-  },
-  driver: {
-    portal: "driver",
-    basePath: "/driver",
-    brandVariant: "light",
-    roleKey: "role.driver",
-    nav: [
-      { href: "/driver", labelKey: "nav.dashboard", icon: LayoutDashboard },
-      { href: "/driver/loads", labelKey: "nav.availableLoads", icon: Inbox, badge: 6 },
-      { href: "/driver/trips", labelKey: "nav.myTrips", icon: MapPinned },
-      { href: "/driver/earnings", labelKey: "nav.earnings", icon: Wallet },
-      { href: "/driver/settings", labelKey: "nav.settings", icon: Settings },
     ],
   },
   admin: {

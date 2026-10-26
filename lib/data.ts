@@ -206,10 +206,9 @@ export type PortalUser = {
   company: string
 }
 
-export const currentUser: Record<"client" | "provider" | "driver" | "admin", PortalUser> = {
+export const currentUser: Record<"client" | "provider" | "admin", PortalUser> = {
   client: { name: "Ahmed Al Balushi", nameAr: "أحمد البلوشي", initials: "AB", avatar: "/avatars/ahmed.png", email: "ahmed@company.com", company: "Al Noor Trading LLC" },
   provider: { name: "Nasser Al Haddad", nameAr: "ناصر الحداد", initials: "NH", avatar: "/avatars/nasser.png", email: "nasser@logistics.com", company: "Gulf Freight Co." },
-  driver: { name: "Khalid Al Rawahi", nameAr: "خالد الرواحي", initials: "KR", avatar: "/avatars/khalid.png", email: "khalid@driver.com", company: "Independent" },
   admin: { name: "Layla Al Said", nameAr: "ليلى السعيد", initials: "LS", avatar: "/avatars/layla.png", email: "layla@emptymiles.com", company: "Empty Miles" },
 }
 

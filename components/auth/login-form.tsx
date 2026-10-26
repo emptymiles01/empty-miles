@@ -18,12 +18,11 @@ export function LoginForm() {
   const [show, setShow] = useState(false)
   const [email, setEmail] = useState("ahmed@company.com")
   const [password, setPassword] = useState("password123")
-  const [role, setRole] = useState<"client" | "provider" | "driver" | "admin">("client")
+  const [role, setRole] = useState<"client" | "provider" | "admin">("client")
 
   const roleRoutes: Record<string, string> = {
     client: "/client",
     provider: "/provider",
-    driver: "/driver",
     admin: "/admin",
   }
 
@@ -50,7 +49,7 @@ export function LoginForm() {
           <Field>
             <FieldLabel>{t("auth.iAmA")}</FieldLabel>
             <div className="grid grid-cols-4 gap-2">
-              {(["client", "provider", "driver", "admin"] as const).map((r) => (
+              {(["client", "provider", "admin"] as const).map((r) => (
                 <button
                   key={r}
                   type="button"

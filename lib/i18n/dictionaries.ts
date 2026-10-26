@@ -86,9 +86,8 @@ export const dictionaries = {
     "nav.announcements": "Announcements",
 
     // Roles
-    "role.client": "Client",
+    "role.client": "Shipper",
     "role.provider": "Provider",
-    "role.driver": "Freelance Driver",
     "role.admin": "Admin",
 
     // Auth
@@ -101,7 +100,6 @@ export const dictionaries = {
     "auth.fullName": "Full Name",
     "auth.forgotPassword": "Forgot password?",
     "auth.forgotPasswordToast": "A password reset link has been sent to your email.",
-    "auth.role.driver": "Driver",
     "auth.signIn": "Sign In",
     "auth.signUp": "Sign up",
     "auth.signOut": "Sign Out",
@@ -435,7 +433,7 @@ export const dictionaries = {
     "adm.gmv": "GMV (Est.)",
     "adm.pendingVerifications": "Pending Verifications",
     "adm.users": "Users",
-    "adm.usersSub": "Manage clients, providers and drivers.",
+    "adm.usersSub": "Manage shippers, transport providers and administrators.",
     "adm.verification": "Verification",
     "adm.verificationSub": "Review and approve provider applications.",
     "adm.announcements": "Announcements",
@@ -536,9 +534,8 @@ export const dictionaries = {
     "nav.verification": "التحقق",
     "nav.announcements": "الإعلانات",
 
-    "role.client": "عميل",
+    "role.client": "شاحن",
     "role.provider": "مزود خدمة",
-    "role.driver": "سائق مستقل",
     "role.admin": "مشرف",
 
     "auth.welcomeBack": "مرحباً بعودتك",
@@ -550,7 +547,6 @@ export const dictionaries = {
     "auth.fullName": "الاسم الكامل",
     "auth.forgotPassword": "نسيت كلمة المرور؟",
     "auth.forgotPasswordToast": "تم إرسال رابط إعادة تعيين كلمة المرور إلى بريدك الإلكتروني.",
-    "auth.role.driver": "سائق",
     "auth.signIn": "تسجيل الدخول",
     "auth.signUp": "إنشاء حساب",
     "auth.signOut": "تسجيل الخروج",
@@ -875,7 +871,7 @@ export const dictionaries = {
     "adm.gmv": "القيمة الإجمالية (تقديرية)",
     "adm.pendingVerifications": "عمليات تحقق معلقة",
     "adm.users": "المستخدمون",
-    "adm.usersSub": "إدارة العملاء ومزودي الخدمة والسائقين.",
+    "adm.usersSub": "إدارة الشاحنين ومزودي النقل والمشرفين.",
     "adm.verification": "التحقق",
     "adm.verificationSub": "مراجعة واعتماد طلبات مزودي الخدمة.",
     "adm.announcements": "الإعلانات",
